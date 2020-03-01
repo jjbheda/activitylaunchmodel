@@ -167,6 +167,14 @@
                     android:text="singleInstance B" />
 
                 <RadioButton
+                    android:id="@+id/rb_mode_single_instance_c_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="singleInstance C" />
+
+
+                <RadioButton
                     android:id="@+id/rb_mode_single_instance_c"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"

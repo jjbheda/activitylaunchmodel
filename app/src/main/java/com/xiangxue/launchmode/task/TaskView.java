@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Map;
 
 public class TaskView extends LinearLayout {
 
@@ -30,15 +31,19 @@ public class TaskView extends LinearLayout {
     }
 
     // Function
-    public void set(int taskId, List<Integer> histIdList) {
+    public void set(int taskId, Map<Integer, String> histIdList) {
         //
         TextView taskIdTv = generate(String.format("Task id: %d", taskId));
         addView(taskIdTv);
 
         if (histIdList != null) {
-            for (int histId : histIdList) {
-                TextView histIdTv = generate(String.valueOf(histId));
-                addView(histIdTv);
+            for(Map.Entry<Integer, String> entry : histIdList.entrySet()){
+                int histIdTv = entry.getKey();
+                String activityName = entry.getValue().substring(entry.getValue().lastIndexOf(".") + 1);
+
+
+                TextView hTv = generate(histIdTv + ", " + activityName);
+                addView(hTv );
             }
         }
     }

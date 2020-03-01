@@ -31,7 +31,6 @@
         <activity android:name="com.xiangxue.launchmode.SingleInstanceBActivity" android:launchMode="singleInstance"  android:taskAffinity="com.xiangxue.launchmode"/>
         <activity android:name="com.xiangxue.launchmode.SingleInstanceCActivity" android:launchMode="singleInstance" android:taskAffinity="com.xiangxue.launchmode.another" />
 
-
         <activity android:name="com.xiangxue.launchmode.forwardresult.ForwardAActivity" android:label="forwardresult">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

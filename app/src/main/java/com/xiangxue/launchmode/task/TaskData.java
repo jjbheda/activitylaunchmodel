@@ -18,7 +18,7 @@ public class TaskData {
     /**
      * key -> Task id, value -> History
      */
-    private Map<Integer, List<Integer>> mData = new HashMap<>();
+    private Map<Integer, Map<Integer, String>> mData = new HashMap<>();
 
     private TaskData() {
     }
@@ -35,26 +35,26 @@ public class TaskData {
     public void add(BaseActivity activity) {
         int taskId = getCurrentTaskId(activity);
         int histId = activity.getId();
-        List<Integer> histIdList = mData.get(taskId);
+        Map<Integer, String> histIdList = mData.get(taskId);
         if (histIdList == null) {
-            histIdList = new ArrayList<>();
+            histIdList = new HashMap<>();
         }
-        histIdList.add(histId);
+        histIdList.put(histId, activity.getLocalClassName());
         mData.put(taskId, histIdList);
     }
 
     public void remove(BaseActivity activity) {
         int id = activity.getId();
 
-        for (Map.Entry<Integer, List<Integer>> kv : mData.entrySet()) {
+        for (Map.Entry<Integer, Map<Integer, String>> kv : mData.entrySet()) {
             int taskId = kv.getKey();
-            List<Integer> histIdList = kv.getValue();
+            Map<Integer, String> histIdList = kv.getValue();
             histIdList.remove(Integer.valueOf(id));
             mData.put(taskId, histIdList);
         }
     }
 
-    public Map<Integer, List<Integer>> getData() {
+    public Map<Integer, Map<Integer, String>> getData() {
         return mData;
     }
 

@@ -217,10 +217,9 @@ public class BaseActivity extends Activity implements View.OnClickListener {
 
     private void drawTask() {
         TaskData taskData = TaskData.getInstance();
-        for (Map.Entry<Integer, List<Integer>> kv : taskData.getData().entrySet()) {
+        for (Map.Entry<Integer, Map<Integer, String>> kv : taskData.getData().entrySet()) {
             TaskView taskView = new TaskView(this);
             taskView.set(kv.getKey(), kv.getValue());
-
             mTaskLl.addView(taskView);
         }
     }
